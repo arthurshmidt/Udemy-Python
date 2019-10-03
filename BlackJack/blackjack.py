@@ -1,6 +1,8 @@
 # blackjack.py is a python file hold all the classes necessary for the
 # blackjack program.
 
+import random
+
 class bj_deck():
     """Enter description.
 
@@ -20,14 +22,14 @@ class bj_deck():
         Accepts (blank) and returns (blank)
         ex. Accepts an action and returns a tuple (observation, reward, done, info).
 
-        Note:
-            Enter a note.
-
         Args:
             variable name (type): definition
 
         Returns:
             variable name (type): definition
+
+        Note:
+            Enter a note.
 
         Example:
             Enter example if necessary.
@@ -36,69 +38,94 @@ class bj_deck():
         self.deck_shuffle()
 
     def deck_shuffle(self):
+        """Method redefines the the deck dictionary, thus adding back any Cards
+        that were rearranged or removed.  In essance re-shuffling the deck.
+
+        Arg: nothing
+        Returns: nothing
+
+        Note: This method redefines the self.deck attribute. A card is defined
+        by a Tuple of (Name,Suite,Value) and a "deck" is the dictionary colletion
+        of all the "cards" organized by number.
+
+        Example: deck.deck_shuffle()
+            * deck being and instance of class bj_deck()
         """
-        Enter description
-        """
-        self.deck = [
-        { 0 : (11,"Ace","Spades")},
-        { 1 : (2,"Two","Spades")},
-        { 2 : (3,"Three","Spades")},
-        { 3 : (4,"Four","Spades")},
-        { 4 : (5,"Five","Spades")},
-        { 5 : (6,"Six","Spades")},
-        { 6 : (7,"Seven","Spades")},
-        { 7 : (8,"Eight","Spades")},
-        { 8 : (9,"Nine","Spades")},
-        { 9 : (10,"Ten","Spades")},
-        { 10 : (10,"Jack","Spades")},
-        { 11 : (10,"Queen","Spades")},
-        { 12 : (10,"King","Spades")},
-        { 13 : (11,"Ace","Hearts")},
-        { 14 : (2,"Two","Hearts")},
-        { 15 : (3,"Three","Hearts")},
-        { 16 : (4,"Four","Hearts")},
-        { 17 : (5,"Five","Hearts")},
-        { 18 : (6,"Six","Hearts")},
-        { 19 : (7,"Seven","Hearts")},
-        { 20 : (8,"Eight","Hearts")},
-        { 21 : (9,"Nine","Hearts")},
-        { 22 : (10,"Ten","Hearts")},
-        { 23 : (10,"Jack","Hearts")},
-        { 24 : (10,"Queen","Hearts")},
-        { 25 : (10,"King","Hearts")},
-        { 26 : (11,"Ace","Diamonds")},
-        { 27 : (2,"Two","Diamonds")},
-        { 28 : (3,"Three","Diamonds")},
-        { 29 : (4,"Four","Diamonds")},
-        { 30 : (5,"Five","Diamonds")},
-        { 31 : (6,"Six","Diamonds")},
-        { 32 : (7,"Seven","Diamonds")},
-        { 33 : (8,"Eight","Diamonds")},
-        { 34 : (9,"Nine","Diamonds")},
-        { 35 : (10,"Ten","Diamonds")},
-        { 36 : (10,"Jack","Diamonds")},
-        { 37 : (10,"Queen","Diamonds")},
-        { 38 : (10,"King","Diamonds")},
-        { 39 : (11,"Ace","Clovers")},
-        { 40 : (2,"Two","Clovers")},
-        { 41 : (3,"Three","Clovers")},
-        { 42 : (4,"Four","Clovers")},
-        { 43 : (5,"Five","Clovers")},
-        { 44 : (6,"Six","Clovers")},
-        { 45 : (7,"Seven","Clovers")},
-        { 46 : (8,"Eight","Clovers")},
-        { 47 : (9,"Nine","Clovers")},
-        { 48 : (10,"Ten","Clovers")},
-        { 49 : (10,"Jack","Clovers")},
-        { 50 : (10,"Queen","Clovers")},
-        { 51 : (10,"King","Clovers")}
-        ]
+        self.deck = {
+        0 : ("Ace","Spades",11),
+        1 : ("Two","Spades",2),
+        2 : ("Three","Spades",3),
+        3 : ("Four","Spades",4),
+        4 : ("Five","Spades",5),
+        5 : ("Six","Spades",6),
+        6 : ("Seven","Spades",7),
+        7 : ("Eight","Spades",8),
+        8 : ("Nine","Spades",9),
+        9 : ("Ten","Spades",10),
+        10 : ("Jack","Spades",10),
+        11 : ("Queen","Spades",10),
+        12 : ("King","Spades",10),
+        13 : ("Ace","Hearts",11),
+        14 : ("Two","Hearts",2),
+        15 : ("Three","Hearts",3),
+        16 : ("Four","Hearts",4),
+        17 : ("Five","Hearts",5),
+        18 : ("Six","Hearts",6),
+        19 : ("Seven","Hearts",7),
+        20 : ("Eight","Hearts",8),
+        21 : ("Nine","Hearts",9),
+        22 : ("Ten","Hearts",10),
+        23 : ("Jack","Hearts",10),
+        24 : ("Queen","Hearts",10),
+        25 : ("King","Hearts",10),
+        26 : ("Ace","Diamonds",11),
+        27 : ("Two","Diamonds",2),
+        28 : ("Three","Diamonds",3),
+        29 : ("Four","Diamonds",4),
+        30 : ("Five","Diamonds",5),
+        31 : ("Six","Diamonds",6),
+        32 : ("Seven","Diamonds",7),
+        33 : ("Eight","Diamonds",8),
+        34 : ("Nine","Diamonds",9),
+        35 : ("Ten","Diamonds",10),
+        36 : ("Jack","Diamonds",10),
+        37 : ("Queen","Diamonds",10),
+        38 : ("King","Diamonds",10),
+        39 : ("Ace","Clovers",11),
+        40 : ("Two","Clovers",2),
+        41 : ("Three","Clovers",3),
+        42 : ("Four","Clovers",4),
+        43 : ("Five","Clovers",5),
+        44 : ("Six","Clovers",6),
+        45 : ("Seven","Clovers",7),
+        46 : ("Eight","Clovers",8),
+        47 : ("Nine","Clovers",9),
+        48 : ("Ten","Clovers",10),
+        49 : ("Jack","Clovers",10),
+        50 : ("Queen","Clovers",10),
+        51 : ("King","Clovers",10)
+        }
 
     def draw_card(self):
+        """Method randomly selects a card from self.deck and returns the card.
+
+        Args: None.
+
+        Returns:
+            temp_card a tuple of (string,string,int): ("Name","Suite",Value)
+
+        Example:
+            name,suite,value = deck.draw_card() or
+            card = deck.draw_card()
         """
-        Enter description
-        """
-        pass
+
+        while True:
+            random_number = randint(0,51)
+            if random_number in self.deck:
+                temp_card = self.deck[random_number]
+                self.deck[random_number]
+                return temp_card
+                break
 
 class bj_player():
     """
