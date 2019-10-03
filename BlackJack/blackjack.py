@@ -144,25 +144,73 @@ class bj_player():
         self.bet = 0
 
     def add_chips(self,chips):
+        """Adds and removes chips from self.chips.
+
+        Accepts (blank) and returns (blank)
+        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+
+        Args:
+            chips (int): The amount you would like to add or remove from the
+            user chip total.
+
+        Returns: None
+
+        Note:
+            Does NOT error check for insuficient funds.
+
+        Example: player.add_chips(-100) - removes 100 chips from balance.
         """
-        Enter description
-        """
-        pass
+
+        self.chips += chips
 
     def add_cards(self,cards):
+        """Enter description and what it does.
+
+        Accepts (blank) and returns (blank)
+        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+
+        Args: cards - tuple of type ("string","string",int)
+
+        Returns: None
         """
-        Enter description
-        """
-        pass
+        self.cards.append(cards)
 
     def place_bet(self):
-        """
-        Enter description
+        """Enter description and what it does.
+
+        Accepts (blank) and returns (blank)
+        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+
+        Args:
+            variable name (type): definition
+
+        Returns:
+            variable name (type): definition
+
+        Note:
+            Enter a note.
+
+        Example:
+            Enter example if necessary.
         """
         pass
 
     def card_count(self):
-        """
-        Enter description
+        """Enter description and what it does.
+
+        Accepts (blank) and returns (blank)
+        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+
+        Args:
+            variable name (type): definition
+
+        Returns:
+            variable name (type): definition
+
+        Note:
+            Enter a note.
+
+        Example:
+            Enter example if necessary.
         """
         pass
