@@ -2,13 +2,35 @@
 # blackjack program.
 
 class bj_deck():
-    """
-    Enter description, attributes and functions of the class.
+    """Enter description.
+
+    Attributes:
+        Attribute name (type): basic description
+
+    Methods:
+        Method Name - basic description
+
+    Note:
+        Enter a note.
     """
 
     def __init__(self):
-        """
-        Enter description
+        """Enter description and what it does.
+
+        Accepts (blank) and returns (blank)
+        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+
+        Note:
+            Enter a note.
+
+        Args:
+            variable name (type): definition
+            
+        Returns:
+            variable name (type): definition
+
+        Example:
+            Enter example if necessary.
         """
         self.deck = {}
         self.deck_shuffle()
