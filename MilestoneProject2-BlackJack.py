@@ -1,5 +1,5 @@
 # Udemy backjack program
-# incorporate: 
+# incorporate:
 #	1. Regular gameplay
 #	2. Error handling
 #	3. Classes
@@ -11,7 +11,7 @@ import random
 from os import system
 import BlackJack.blackjack as bj
 
-# Declare Global variables 
+# Declare Global variables
 
 continue_playing = True				# Set flag to enter tournament loop
 
@@ -27,7 +27,7 @@ def clear_screen():
 def welcome_message():
 	print("Welcome to BlackJack!\n")
 
-# Check to see if a player is out of funds.  
+# Check to see if a player is out of funds.
 def lose_check(player1,player2):
 	return (player1.chips == 0) or (player2.chips == 0)
 
@@ -81,9 +81,9 @@ while continue_playing:
 	player1.add_chips(-player1.bet)		# Remove bet from chips
 
 	player1.add_cards(deck.draw_card())	# First round Cards
-	dealer.add_cards(deck.draw_card())	# First round cards	
+	dealer.add_cards(deck.draw_card())	# First round cards
 	player1.add_cards(deck.draw_card())	# Second round cards
-	
+
 	player1_turn = True					# Set turn flags
 	dealer_turn = True					# set turn flags
 	bust_flag = False					# Set Bust flag
@@ -100,12 +100,14 @@ while continue_playing:
 			player1_turn = False
 			dealer_turn = False
 			break						# Break out of loop
+		elif (player1.card_count() == 21) and (len(player1.cards) > 2):
+			Break						# Break out of loop
 
 		# Hit / Hold
 		hit_hold = input("Would you like Hit/Hold: ").upper()
 		if hit_hold == "HIT":
 			player1.add_cards(deck.draw_card())
-			
+
 			# Check if Bust
 			if player1.card_count() > 21:		# Complete
 				display_board(player1,dealer)
@@ -138,7 +140,7 @@ while continue_playing:
 			hit_hold = "HOLD"
 		if hit_hold == "HIT":
 			dealer.add_cards(deck.draw_card())
-			
+
 			# Check if Bust
 			if dealer.card_count() > 21:		# Complete
 				display_board(player1,dealer)
@@ -170,7 +172,7 @@ while continue_playing:
 	dealer.cards = []
 	deck.deck_shuffle()
 
-	# check to see if player is out of funds.   
+	# check to see if player is out of funds.
 	# !! note: consider consolidating into lose_check() function.
 	if lose_check(player1,dealer):
 		continue_playing = False
