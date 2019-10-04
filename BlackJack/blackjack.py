@@ -34,8 +34,8 @@ class bj_deck():
         Example:
             Enter example if necessary.
         """
-        self.deck = {}
-        self.deck_shuffle()
+        self.deck = {}              # dictionary of tuples
+        self.deck_shuffle()         # Shuffles deck upon instanciation
 
     def deck_shuffle(self):
         """Method redefines the the deck dictionary, thus adding back any Cards
@@ -128,20 +128,14 @@ class bj_deck():
                 break
 
 class bj_player():
-    """
-    Enter description, attributes and functions of the class.
-    """
 
     def __init__(self,player_name="Computer",is_computer=True,chips=0):
-        """
-        Enter description
-        """
 
-        self.player_name = player_name
-        self.is_computer = is_computer
-        self.chips = chips
-        self.cards = []                 # list of dictionaries
-        self.bet = 0
+        self.player_name = player_name  # string
+        self.is_computer = is_computer  # boolean
+        self.chips = chips              # int
+        self.cards = []                 # list of tuples
+        self.bet = 0                    # int
 
     def add_chips(self,chips):
         """Adds and removes chips from self.chips.
@@ -163,7 +157,7 @@ class bj_player():
 
         self.chips += chips
 
-    def add_cards(self,cards):
+    def add_cards(self,card):
         """Enter description and what it does.
 
         Accepts (blank) and returns (blank)
@@ -173,44 +167,34 @@ class bj_player():
 
         Returns: None
         """
-        self.cards.append(cards)
+        self.cards.append(card)
 
     def place_bet(self):
-        """Enter description and what it does.
+        """Prompts user for bet amount and removes betting funds from chips and
+        holds bet amount in memory position "self.bet"
 
-        Accepts (blank) and returns (blank)
-        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+        Args: None
 
-        Args:
-            variable name (type): definition
+        Returns: None
 
-        Returns:
-            variable name (type): definition
+        Note: This function does not do any error checking.  possibly something
+            for the future.
 
-        Note:
-            Enter a note.
-
-        Example:
-            Enter example if necessary.
+        Example: player1.place_bet()
         """
-        pass
+        self.bet = int(input("Enter bet amount: "))
 
     def card_count(self):
-        """Enter description and what it does.
+        """Counts the value of the cards in the players hand.
 
-        Accepts (blank) and returns (blank)
-        ex. Accepts an action and returns a tuple (observation, reward, done, info).
+        Args: None
 
-        Args:
-            variable name (type): definition
+        Returns: temp_value (int): the highest value of the cards.
 
-        Returns:
-            variable name (type): definition
-
-        Note:
-            Enter a note.
-
-        Example:
-            Enter example if necessary.
+        Example: if player1.card_count() > 21: do something.
         """
-        pass
+        temp_value = 0
+        for temp_card in self.cards:
+            temp_value += temp_card[2]
+
+        return temp_value
