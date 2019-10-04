@@ -123,7 +123,7 @@ class bj_deck():
             random_number = randint(0,51)
             if random_number in self.deck:
                 temp_card = self.deck[random_number]
-                self.deck[random_number]
+                del self.deck[random_number]
                 return temp_card
                 break
 
